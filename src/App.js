@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import * as clipboardy from "clipboardy";
 import styled from "styled-components";
 
-const Wrap = styled.div`
+const InnerWrap = styled.main`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -34,6 +34,14 @@ const Wrap = styled.div`
     margin-right: 10px;
   }
 `;
+const OuterWrap = styled.div`
+  .footer {
+    text-align: right;
+    a {
+      color: rebeccapurple;
+    }
+  }
+`;
 
 export default function App() {
   const [text, setText] = React.useState("");
@@ -52,15 +60,23 @@ export default function App() {
     textInput.current.focus();
   }
   return (
-    <Wrap>
-      <h1>Delimit-it!</h1>
-      <form onSubmit={handleSubmit} onReset={handleReset}>
-        <label htmlFor="todelimit">What can I delimit for you?</label>
-        <input id="todelimit" type="text" ref={textInput} autoFocus />
-        <p>{text}</p>
-        <button type="submit">Submit</button>
-        <button type="reset">Clear</button>
-      </form>
-    </Wrap>
+    <OuterWrap>
+      <InnerWrap>
+        <h1>Delimit-it!</h1>
+        <form onSubmit={handleSubmit} onReset={handleReset}>
+          <label htmlFor="todelimit">What can I delimit for you?</label>
+          <input id="todelimit" type="text" ref={textInput} autoFocus />
+          <p>{text}</p>
+          <button type="submit">Submit</button>
+          <button type="reset">Clear</button>
+        </form>
+      </InnerWrap>
+      <footer>
+        <p class="footer">
+          a <a href="https://twitter.com/mattcdowning">@mattcdowning</a>{" "}
+          production
+        </p>
+      </footer>
+    </OuterWrap>
   );
 }
