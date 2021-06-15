@@ -35,7 +35,7 @@ const InnerWrap = styled.main`
   }
 `;
 const OuterWrap = styled.div`
-  .footer {
+  footer {
     text-align: right;
     a {
       color: rebeccapurple;
@@ -49,7 +49,7 @@ export default function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const todelimit = event.target.elements.todelimit.value;
+    const todelimit = textInput.current.value;
     const splitText = todelimit.trim().split(" ");
     const joined = splitText.join("-");
     clipboardy.write(joined);
@@ -72,7 +72,7 @@ export default function App() {
         </form>
       </InnerWrap>
       <footer>
-        <p class="footer">
+        <p>
           a <a href="https://twitter.com/mattcdowning">@mattcdowning</a>{" "}
           production
         </p>
